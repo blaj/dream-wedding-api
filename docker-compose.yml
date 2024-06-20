@@ -1,0 +1,6 @@
+﻿services:
+  dreamweddingapi:
+    image: dreamweddingapi
+    build:
+      context: .
+      dockerfile: DreamWeddingApi/Dockerfile
