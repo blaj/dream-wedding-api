@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamWeddingApi", "DreamWeddingApi\DreamWeddingApi.csproj", "{CAEF6AFF-AFB1-4BAF-BD42-F2EC678EA6C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{CAEF6AFF-AFB1-4BAF-BD42-F2EC678EA6C1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8C9B17D4-0B3E-435E-ADAA-73948E0FDC8A}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthorizationServer", "AuthorizationServer\AuthorizationServer.csproj", "{3D956CBC-0089-49A3-8AAF-7944ED05DC2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{812E2605-9CB3-4BA0-A74F-B4B4A72A6A3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,5 +21,13 @@ Global
 		{CAEF6AFF-AFB1-4BAF-BD42-F2EC678EA6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAEF6AFF-AFB1-4BAF-BD42-F2EC678EA6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAEF6AFF-AFB1-4BAF-BD42-F2EC678EA6C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D956CBC-0089-49A3-8AAF-7944ED05DC2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D956CBC-0089-49A3-8AAF-7944ED05DC2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D956CBC-0089-49A3-8AAF-7944ED05DC2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D956CBC-0089-49A3-8AAF-7944ED05DC2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{812E2605-9CB3-4BA0-A74F-B4B4A72A6A3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{812E2605-9CB3-4BA0-A74F-B4B4A72A6A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{812E2605-9CB3-4BA0-A74F-B4B4A72A6A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{812E2605-9CB3-4BA0-A74F-B4B4A72A6A3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
