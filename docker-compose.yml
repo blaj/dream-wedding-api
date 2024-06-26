@@ -4,3 +4,9 @@
     build:
       context: .
       dockerfile: DreamWeddingApi/Dockerfile
+
+  authorizationserver:
+    image: authorizationserver
+    build:
+      context: .
+      dockerfile: AuthorizationServer/Dockerfile
