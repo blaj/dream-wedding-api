@@ -1,6 +1,7 @@
 using DreamWeddingApi.Api.DAL;
 using DreamWeddingApi.Api.Wedding.Repository;
 using DreamWeddingApi.Api.Wedding.Service;
+using DreamWeddingApi.Shared.Common.Interceptor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -86,12 +87,14 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddHealthChecks();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =>
     options
         .UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
-        .UseSnakeCaseNamingConvention());
+        .UseSnakeCaseNamingConvention()
+        .AddInterceptors(serviceProvider.GetRequiredService<SoftDeleteInterceptor>()));
 
 builder.Services
+    .AddSingleton<SoftDeleteInterceptor>()
     .AddScoped<WeddingService>()
     .AddScoped<WeddingRepository>();
 
