@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using AuthenticationService = DreamWeddingApi.AuthorizationServer.Service.AuthenticationService;
 
 namespace DreamWeddingApi.AuthorizationServer.Controllers;
 
-public class UserController : Controller
+public class UserController(AuthenticationService authenticationService) : Controller
 {
     [HttpGet]
     [AllowAnonymous]
@@ -27,18 +28,14 @@ public class UserController : Controller
             return View(userLoginModel);
         }
 
-        var claims = new List<Claim>
-        {
-            new(ClaimTypes.Name, userLoginModel.Username),
-        };
-
         var principal =
-            new ClaimsPrincipal(
-                new List<ClaimsIdentity>
-                {
-                    new(claims, CookieAuthenticationDefaults.AuthenticationScheme)
-                });
+            authenticationService.GetPrincipal(userLoginModel.Username, userLoginModel.Password);
 
+        if (principal is null)
+        {
+            return View(userLoginModel);
+        }
+        
         await HttpContext.SignInAsync(
             CookieAuthenticationDefaults.AuthenticationScheme,
             principal);

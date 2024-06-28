@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DreamWeddingApi.Shared.Common.Entity;
+using Microsoft.EntityFrameworkCore;
 using Npgsql.NameTranslation;
 using OpenIddict.EntityFrameworkCore.Models;
 
@@ -7,6 +8,8 @@ namespace DreamWeddingApi.AuthorizationServer.Data;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
     : DbContext(options)
 {
+    public DbSet<User> Users { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

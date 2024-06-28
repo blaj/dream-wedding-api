@@ -10,6 +10,8 @@ public class User : AuditingEntity
     [Required]
     public string Username { get; set; } = string.Empty;
 
+    public string Password { get; set; } = string.Empty;
+    
     [Column("email")] [Required] public string Email { get; set; } = string.Empty;
 
 }

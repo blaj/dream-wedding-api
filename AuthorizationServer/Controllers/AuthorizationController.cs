@@ -67,7 +67,11 @@ public class AuthorizationController(
         }
 
         var userId =
+            result.Principal?.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+        var username =
             result.Principal?.FindFirst(ClaimTypes.Name)!.Value;
+        var email =
+            result.Principal?.FindFirst(ClaimTypes.Email)!.Value;
 
         var identity =
             new ClaimsIdentity(
@@ -77,8 +81,8 @@ public class AuthorizationController(
 
         identity
             .SetClaim(OpenIddictConstants.Claims.Subject, userId)
-            .SetClaim(OpenIddictConstants.Claims.Email, userId)
-            .SetClaim(OpenIddictConstants.Claims.Name, userId)
+            .SetClaim(OpenIddictConstants.Claims.Email, email)
+            .SetClaim(OpenIddictConstants.Claims.Name, username)
             .SetClaims(
                 OpenIddictConstants.Claims.Role,
                 [..new List<string> { "user", "admin" }]);

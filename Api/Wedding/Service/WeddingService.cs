@@ -14,7 +14,7 @@ public class WeddingService(WeddingRepository weddingRepository, IMapper mapper)
 
     public WeddingDetailsDto? GetOne(long id)
     {
-        return mapper.Map<WeddingDetailsDto>(weddingRepository.FindById(id));
+        return mapper.Map<WeddingDetailsDto>(weddingRepository.FindOneById(id));
     }
 
     public Entity.Wedding Create(WeddingCreateRequest weddingCreateRequest)
@@ -37,7 +37,7 @@ public class WeddingService(WeddingRepository weddingRepository, IMapper mapper)
     private Entity.Wedding FetchWedding(long id)
     {
         return
-            weddingRepository.FindById(id)
+            weddingRepository.FindOneById(id)
             ??
             throw new EntityNotFoundException("Wedding not found");
     }

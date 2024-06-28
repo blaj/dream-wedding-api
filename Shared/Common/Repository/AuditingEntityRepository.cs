@@ -13,7 +13,7 @@ public class AuditingEntityRepository<TEntity>(DbContext dbContext)
         return _dbSet.ToList();
     }
 
-    public virtual TEntity? FindById(long id)
+    public virtual TEntity? FindOneById(long id)
     {
         return _dbSet.Find(id);
     }

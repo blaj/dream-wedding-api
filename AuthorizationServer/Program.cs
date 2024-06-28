@@ -1,4 +1,5 @@
 using DreamWeddingApi.AuthorizationServer.Data;
+using DreamWeddingApi.AuthorizationServer.Repository;
 using DreamWeddingApi.AuthorizationServer.Service;
 using DreamWeddingApi.Shared.Common.Interceptor;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -65,7 +66,9 @@ builder.Services.AddOpenIddict()
 
 builder.Services
     .AddSingleton<AuditingEntityInterceptor>()
-    .AddTransient<AuthorizationService>()
+    .AddScoped<UserRepository>()
+    .AddScoped<AuthorizationService>()
+    .AddScoped<AuthenticationService>()
     .AddHostedService<TestDataService>();
 
 builder.Services

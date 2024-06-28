@@ -1,4 +1,5 @@
 using DreamWeddingApi.Api.Data;
+using DreamWeddingApi.Api.Security.Filter;
 using DreamWeddingApi.Api.Wedding.Repository;
 using DreamWeddingApi.Api.Wedding.Service;
 using DreamWeddingApi.Shared.Common.Interceptor;
@@ -9,7 +10,7 @@ using OpenIddict.Validation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add<UserDataActionFilter>());
 
 builder.Services
     .AddOpenIddict()

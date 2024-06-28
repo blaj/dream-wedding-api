@@ -1,4 +1,6 @@
-﻿using DreamWeddingApi.Api.Wedding.DTO;
+﻿using DreamWeddingApi.Api.Security.Attribute;
+using DreamWeddingApi.Api.Security.DTO;
+using DreamWeddingApi.Api.Wedding.DTO;
 using DreamWeddingApi.Api.Wedding.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +26,8 @@ public class WeddingController : ControllerBase
     }
 
     [HttpGet("/wedding/{id}")]
-    public ActionResult<WeddingDetailsDto> Get(long id)
+    [UserDataParameter]
+    public ActionResult<WeddingDetailsDto> Get(long id, UserData userData)
     {
         var weddingDetailsDto = _weddingService.GetOne(id);
 
