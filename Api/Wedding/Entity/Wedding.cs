@@ -13,7 +13,7 @@ public class Wedding : AuditingEntity
     
     [Column("on_date")]
     [Required]
-    public DateTime OnDate { get; set; }
+    public DateOnly OnDate { get; set; }
 
     [Column("budget")]
     [Required]

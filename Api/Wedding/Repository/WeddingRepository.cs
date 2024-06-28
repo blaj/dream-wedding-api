@@ -1,11 +1,9 @@
-﻿using DreamWeddingApi.Api.DAL;
+﻿using DreamWeddingApi.Api.Data;
+using DreamWeddingApi.Shared.Common.Repository;
 
 namespace DreamWeddingApi.Api.Wedding.Repository;
 
-public class WeddingRepository(ApplicationDbContext applicationDbContext)
+public class WeddingRepository(ApplicationDbContext dbContext)
+    : AuditingEntityRepository<Entity.Wedding>(dbContext)
 {
-    public IEnumerable<Api.Wedding.Entity.Wedding> FindAll()
-    {
-        return applicationDbContext.Weddings.ToList();
-    }
 }

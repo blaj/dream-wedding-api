@@ -1,4 +1,4 @@
-using DreamWeddingApi.AuthorizationServer.DAL;
+using DreamWeddingApi.AuthorizationServer.Data;
 using DreamWeddingApi.AuthorizationServer.Service;
 using DreamWeddingApi.Shared.Common.Interceptor;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -17,7 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =
             builder.Configuration.GetConnectionString("DefaultConnection"),
             x => x.MigrationsHistoryTable("entity_framework_migrations_history", "public"))
         .UseSnakeCaseNamingConvention()
-        .AddInterceptors(serviceProvider.GetRequiredService<SoftDeleteInterceptor>())
+        .AddInterceptors(serviceProvider.GetRequiredService<AuditingEntityInterceptor>())
         .UseOpenIddict()
 );
 
@@ -64,7 +64,7 @@ builder.Services.AddOpenIddict()
     });
 
 builder.Services
-    .AddSingleton<SoftDeleteInterceptor>()
+    .AddSingleton<AuditingEntityInterceptor>()
     .AddTransient<AuthorizationService>()
     .AddHostedService<TestDataService>();
 

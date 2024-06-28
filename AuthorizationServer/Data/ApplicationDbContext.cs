@@ -2,7 +2,7 @@
 using Npgsql.NameTranslation;
 using OpenIddict.EntityFrameworkCore.Models;
 
-namespace DreamWeddingApi.AuthorizationServer.DAL;
+namespace DreamWeddingApi.AuthorizationServer.Data;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
     : DbContext(options)

@@ -1,3 +1,3 @@
 ﻿namespace DreamWeddingApi.Api.Wedding.DTO;
 
-public record  WeddingListItemDto(string Name);
+public record  WeddingListItemDto(long Id, string Name, DateOnly OnDate, int Budget);
