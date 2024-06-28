@@ -1,4 +1,4 @@
-using DreamWeddingApi.Api.DAL;
+using DreamWeddingApi.Api.Data;
 using DreamWeddingApi.Api.Wedding.Repository;
 using DreamWeddingApi.Api.Wedding.Service;
 using DreamWeddingApi.Shared.Common.Interceptor;
@@ -91,10 +91,11 @@ builder.Services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =
     options
         .UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
         .UseSnakeCaseNamingConvention()
-        .AddInterceptors(serviceProvider.GetRequiredService<SoftDeleteInterceptor>()));
+        .AddInterceptors(serviceProvider.GetRequiredService<AuditingEntityInterceptor>()));
 
 builder.Services
-    .AddSingleton<SoftDeleteInterceptor>()
+    .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies())
+    .AddSingleton<AuditingEntityInterceptor>()
     .AddScoped<WeddingService>()
     .AddScoped<WeddingRepository>();
 

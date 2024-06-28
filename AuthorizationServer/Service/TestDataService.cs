@@ -1,4 +1,4 @@
-﻿using DreamWeddingApi.AuthorizationServer.DAL;
+﻿using DreamWeddingApi.AuthorizationServer.Data;
 using OpenIddict.Abstractions;
 
 namespace DreamWeddingApi.AuthorizationServer.Service;
